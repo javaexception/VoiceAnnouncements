@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private synchronized  void Play(final String str) {
-        System.out.println("aDASDASDASDAD "+VoiceUtils.with(this).GetIsPlay());
+
         if (VoiceUtils.with(this).GetIsPlay()){
             System.out.println("正在播放语音 ");
             new Thread() {
@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
                 public  void run() {
                     super.run();
                     try {
-                        Thread.sleep(100);//休眠3秒
+                        Thread.sleep(100);//休眠0.1秒
                         Play(str);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
