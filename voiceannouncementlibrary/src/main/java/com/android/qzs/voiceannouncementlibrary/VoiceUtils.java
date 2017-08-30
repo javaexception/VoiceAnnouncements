@@ -2,6 +2,7 @@ package com.android.qzs.voiceannouncementlibrary;
 
 import android.content.Context;
 import android.media.MediaPlayer;
+import android.util.Log;
 
 import java.io.IOException;
 
@@ -11,8 +12,9 @@ import java.io.IOException;
 
 public class VoiceUtils {
     private static volatile VoiceUtils singleton = null;
+    public    boolean IsPlaying;
 
-    MediaPlayer mediaPlayer=null;
+      MediaPlayer mediaPlayer=null;
     private Context mContext;
 
     public VoiceUtils(Context context) {
@@ -35,17 +37,28 @@ public class VoiceUtils {
         return singleton;
     }
 
+public void SetIsPlay( boolean IsPlaying){
 
-    public  void Play(String stramount,boolean strsuccess)
+    this.IsPlaying=IsPlaying;
+}
+
+    public boolean GetIsPlay() {
+        return IsPlaying;
+    }
+    public void Play(String stramount,boolean strsuccess)
     {
+
+
+
         String str=null;
         //如果是TRUE  就播放“收款成功”这句话
         if (strsuccess){
      str  =    "$" + PlaySound.capitalValueOf(Double.valueOf(String.format("%.2f", Double.parseDouble(stramount))));
 }else {
      str  = PlaySound.capitalValueOf(Double.valueOf(String.format("%.2f", Double.parseDouble(stramount))));
-}
 
+}
+        System.out.println("金额的长度 "+str);
         String temp ="";
 
 
@@ -62,7 +75,7 @@ public class VoiceUtils {
     }
     public  void PlaySoundList( final int soundindex, final String soundString, final int soundcount)
     {
-
+        singleton.SetIsPlay(true);
         boolean createState=false;
         if(mediaPlayer==null) {
             mediaPlayer = null;
@@ -86,6 +99,8 @@ public class VoiceUtils {
                 if(soundindex<soundcount) {
                     newsoundindex=newsoundindex+1;
                     PlaySoundList(newsoundindex, soundString,soundcount);
+                }else {
+                    singleton.SetIsPlay(false);
                 }
 
             }
@@ -98,6 +113,7 @@ public class VoiceUtils {
                 mediaPlayer.prepare();
             //开始播放音频
             mediaPlayer.start();
+
             System.out.println("播放音频["+soundindex+"]");
         } catch (IllegalStateException e) {
             e.printStackTrace();
@@ -172,7 +188,6 @@ public class VoiceUtils {
 
         }
         //下面这三句是控制语速，但是只适用于Android6.0 以上，以下的就会报错，所以这个功能下次更新时解决
-//
 //        PlaybackParams pbp = new PlaybackParams();
 //        pbp.setSpeed(1.5F);
 //        mp.setPlaybackParams(pbp);
