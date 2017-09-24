@@ -71,6 +71,7 @@ allprojects {
 我的公众号如下:<br>
 
 
-![333.jpg](http://upload-images.jianshu.io/upload_images/2787891-fea940bfb62b16b3.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+![安卓干货铺](http://upload-images.jianshu.io/upload_images/2787891-b84423a2473039b8.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 ![a2.jpg](http://upload-images.jianshu.io/upload_images/2787891-b84864a81562fd5a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
