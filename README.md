@@ -23,7 +23,7 @@ allprojects {
 
 ```
 	dependencies {
-	     compile 'com.github.javaexception:VoiceAnnouncements:v1.2'
+     compile 'com.github.javaexception:VoiceAnnouncements:v1.2'
 	}
   ```
   
@@ -36,7 +36,7 @@ allprojects {
     VoiceUtils.with(this).Play("1111",true);
     ```
     
-    **2.防止用户同时接收多条语音的调用方法：**<br>
+    **2.防止用户同时接收多条语音造成的语音重叠，采用下面的调用方法：**<br>
     
       ```
        private synchronized  void Play(final String str) {
